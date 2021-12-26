@@ -52,14 +52,18 @@ class MealAppTests: XCTestCase {
     
     func testFetchMealsFromCategory() {
         let category = "Beef"
+        let exp = XCTestExpectation(description: "200 OK")
+        let countGreaterThan = 10
         mealFromCategory.getMealsFromCategory(for: category) { (result) in
             switch result {
             case .failure(let networkError):
                 XCTFail("network error: \(networkError)")
                 
             case .success(let data):
-                XCTAssertGreaterThan(<#T##expression1: Comparable##Comparable#>, <#T##expression2: Comparable##Comparable#>)
+                exp.fulfill()
+                XCTAssertGreaterThan(data.count, countGreaterThan)
             }
         }
+        wait(for: [exp], timeout: 5.0)
     }
 }
