@@ -8,8 +8,9 @@
 import Foundation
 
 class MealAPI {
-    static func fetchCategories(for endpoint: String, completion: @escaping (Result<meals, Errors>) -> Void) {
-        
+    static func fetchCategories(completion: @escaping (Result<meals, Errors>) -> Void) {
+        let endpoint = "https://www.themealdb.com/api/json/v1/1/categories.php"
+
         // network request
         NetworkRequest.shared.getData(from: endpoint) { (result) in
             switch result {
