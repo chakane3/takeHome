@@ -12,8 +12,8 @@ class categoryCell: UITableViewCell {
     @IBOutlet weak var categoryDescription: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
     
-    func configureCell(for meal: meals) {
-        categoryLabel.text = meal.categories[0].strCategory
-        categoryDescription.text = meal.categories[0].strCategoryDescription
+    func configureCell(for category: categoryInfo) {
+        categoryLabel.text = category.strCategory
+        categoryDescription.text = category.strCategoryDescription
     }
 }

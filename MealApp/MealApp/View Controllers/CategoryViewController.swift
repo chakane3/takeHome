@@ -10,39 +10,31 @@ import UIKit
 class CategoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = [meals]() {
+    var categories = [categoryInfo]() {
         didSet {
             tableView.reloadData()
-            loadCategoryData()
+            ()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        loadCategoryData()
-        dump(categories)
-        
+        loadData()
     }
     
-    // gather our data
-    func loadCategoryData() {
-        
-        MealAPI.fetchCategories() { [weak self] (result) in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async { [weak self]  in
-                guard let self = self else { return }
-                
+    func loadData() {
+        meals.getCategories { (result) in
+            DispatchQueue.main.async {
                 switch result {
-                case .failure(let networkError):
-                    fatalError("network error: \(networkError)")
+                case .failure( let error):
+                    print(error)
                     
-                case .success(let data):
-                    self.categories = [data]
-//                    dump(self.categories)
+                case .success(let categories):
+                    self.categories = categories
                 }
             }
+            
         }
     }
 }
