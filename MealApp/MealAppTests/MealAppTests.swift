@@ -9,28 +9,43 @@ import XCTest
 @testable import MealApp
 
 class MealAppTests: XCTestCase {
+    static let endpoint = "https://www.themealdb.com/api/json/v1/1/categories.php"
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testNetworkRequest() {
+        
+        // gather what we want to test
+        let exp = XCTestExpectation(description: "200 OK")
+        
+        // make the network request
+        NetworkRequest.shared.getData(from: MealAppTests.endpoint) { (result) in
+            switch result {
+            case .failure(let networkError):
+                XCTFail("network error: \(networkError)")
+                
+            case .success(let data):
+                exp.fulfill()
+                XCTAssertGreaterThan(data.count, 10_000, "data should be bigger than 10k bytes \(data.count)")
+            }
         }
+        
+        // timeout error
+        wait(for: [exp], timeout: 5.0)
     }
-
+    
+    func testFetchCategories() {
+        let countGreaterThan = 10
+        let exp = XCTestExpectation(description: "found meals")
+        MealAPI.fetchCategories(for: MealAppTests.endpoint) { (result) in
+            switch result {
+            case .failure(let networkError):
+                XCTFail("network error: \(networkError)")
+                
+            case .success(let data):
+                exp.fulfill()
+                XCTAssertGreaterThan(data.categories.count, countGreaterThan)
+            }
+        }
+        wait(for: [exp], timeout: 5.0)
+    }
 }
