@@ -15,5 +15,8 @@ class categoryCell: UITableViewCell {
     func configureCell(for category: categoryInfo) {
         categoryLabel.text = category.strCategory
         categoryDescription.text = category.strCategoryDescription
+        
+        // TODO: add image handler
     }
+
 }

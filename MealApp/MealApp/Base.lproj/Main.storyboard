@@ -46,7 +46,7 @@
         <!--Categories-->
         <scene sceneID="hVe-gb-sxz">
             <objects>
-                <viewController id="Pmx-2O-77q" customClass="CategoryViewController" customModule="MealApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pmx-2O-77q" customClass="CategoryView" customModule="MealApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dy7-ZA-dtP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
         <!--Meals-->
         <scene sceneID="PdN-dE-Aku">
             <objects>
-                <viewController id="U8d-kH-vmp" sceneMemberID="viewController">
+                <viewController id="U8d-kH-vmp" customClass="MealByCategoryView" customModule="MealApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cQD-Ky-Ck6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,14 +129,38 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mGG-zr-s1x">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mealCell" rowHeight="173" id="mGG-zr-s1x" customClass="CategoryMealCell" customModule="MealApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="173"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mGG-zr-s1x" id="9hU-Ka-Kiu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xM5-OC-cD3">
+                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="haA-lI-OLn">
+                                                    <rect key="frame" x="20" y="34" width="149" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="Osj-gQ-fPZ"/>
+                                                        <constraint firstAttribute="width" constant="149" id="giN-QR-k9j"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="haA-lI-OLn" firstAttribute="bottom" secondItem="9hU-Ka-Kiu" secondAttribute="bottomMargin" id="0Uo-tx-9gp"/>
+                                                <constraint firstItem="haA-lI-OLn" firstAttribute="leading" secondItem="9hU-Ka-Kiu" secondAttribute="leadingMargin" id="S7a-fo-ZZl"/>
+                                                <constraint firstItem="xM5-OC-cD3" firstAttribute="top" secondItem="9hU-Ka-Kiu" secondAttribute="topMargin" id="SRD-0i-k4u"/>
+                                                <constraint firstItem="xM5-OC-cD3" firstAttribute="trailing" secondItem="9hU-Ka-Kiu" secondAttribute="trailingMargin" id="prW-o1-661"/>
+                                                <constraint firstItem="xM5-OC-cD3" firstAttribute="leading" secondItem="9hU-Ka-Kiu" secondAttribute="leadingMargin" id="rkC-Ua-lnB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="mealImageView" destination="haA-lI-OLn" id="ffT-TD-fhC"/>
+                                            <outlet property="mealNameLabel" destination="xM5-OC-cD3" id="oZT-hg-57V"/>
                                             <segue destination="PtK-x1-Qpn" kind="show" id="JTl-6x-coF"/>
                                         </connections>
                                     </tableViewCell>
@@ -153,6 +177,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meals" id="qwC-sM-5nz"/>
+                    <connections>
+                        <outlet property="tableView" destination="qPi-qM-bxH" id="YxX-uE-I4u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILO-Dv-fM3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var categories = [categoryInfo]() {
@@ -25,6 +25,8 @@ class CategoryViewController: UIViewController {
     
     func loadData() {
         meals.getCategories { (result) in
+            
+            // move to main thread
             DispatchQueue.main.async {
                 switch result {
                 case .failure( let error):
@@ -34,13 +36,12 @@ class CategoryViewController: UIViewController {
                     self.categories = categories
                 }
             }
-            
         }
     }
 }
 
 // extend our view controller to conform to the tableView's datasource protocol
-extension CategoryViewController: UITableViewDataSource {
+extension CategoryView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryItem", for: indexPath) as? categoryCell else {
             fatalError("could not dequeue tableView; check identify inspector")
