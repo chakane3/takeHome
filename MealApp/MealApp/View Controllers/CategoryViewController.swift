@@ -47,7 +47,6 @@ extension CategoryViewController: UITableViewDataSource {
         }
         
         let category = categories[indexPath.row]
-//        category.categories[0]
         cell.configureCell(for: category)
         return cell
     }

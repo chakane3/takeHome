@@ -1,5 +1,5 @@
 //
-//  Meals.swift
+//  MealCategory.swift
 //  MealApp
 //
 //  Created by Chakane Shegog on 12/25/21.

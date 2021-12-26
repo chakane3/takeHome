@@ -36,17 +36,30 @@ class MealAppTests: XCTestCase {
     func testFetchCategories() {
         let countGreaterThan = 10
         let exp = XCTestExpectation(description: "found meals")
-        MealAPI.fetchCategories() { (result) in
+        meals.getCategories { (result) in
+            switch result {
+            case .failure(let networkError):
+                XCTFail("networkError: \(networkError)")
+                
+            case .success(let data):
+                exp.fulfill()
+                XCTAssertGreaterThan(data.count, countGreaterThan, "the data should have more than 10 items, it actually has \(countGreaterThan)")
+            }
+        }
+        wait(for: [exp], timeout: 5.0)
+    }
+    
+    
+    func testFetchMealsFromCategory() {
+        let category = "Beef"
+        mealFromCategory.getMealsFromCategory(for: category) { (result) in
             switch result {
             case .failure(let networkError):
                 XCTFail("network error: \(networkError)")
                 
             case .success(let data):
-                exp.fulfill()
-                print(data)
-                XCTAssertGreaterThan(data.categories.count, countGreaterThan)
+                XCTAssertGreaterThan(<#T##expression1: Comparable##Comparable#>, <#T##expression2: Comparable##Comparable#>)
             }
         }
-        wait(for: [exp], timeout: 5.0)
     }
 }
