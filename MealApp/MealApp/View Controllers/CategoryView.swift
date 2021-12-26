@@ -38,6 +38,14 @@ class CategoryView: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let mealByCategoryVC = segue.destination as? MealByCategoryView, let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("verify class name in identity inspector - could not get an instance")
+        }
+        let category = categories[indexPath.row]
+        mealByCategoryVC.userSelectedCategory = category.strCategory
+    }
 }
 
 // extend our view controller to conform to the tableView's datasource protocol
