@@ -9,14 +9,16 @@ import XCTest
 @testable import MealApp
 
 class MealAppTests: XCTestCase {
+    static let endpoint = "https://www.themealdb.com/api/json/v1/1/categories.php"
+
     
     func testNetworkRequest() {
-        let categoryEndpoint = "https://www.themealdb.com/api/json/v1/1/categories.php"
+        
         // gather what we want to test
         let exp = XCTestExpectation(description: "200 OK")
         
         // make the network request
-        NetworkRequest.shared.getData(from: categoryEndpoint) { (result) in
+        NetworkRequest.shared.getData(from: MealAppTests.endpoint) { (result) in
             switch result {
             case .failure(let networkError):
                 XCTFail("network error: \(networkError)")

@@ -16,8 +16,6 @@ class MealByCategoryView: UIViewController {
         }
     }
     
-    var userSelectedCategory: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,7 +23,7 @@ class MealByCategoryView: UIViewController {
     }
     
     func loadData() {
-        mealFromCategory.getMealsFromCategory(for: userSelectedCategory ?? "beef") { (result) in
+        mealFromCategory.getMealsFromCategory(for: "Beef") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):

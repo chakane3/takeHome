@@ -37,6 +37,7 @@ class CategoryView: UIViewController {
             }
         }
     }
+<<<<<<< HEAD
     
     
     // pass category name to MealByCategoryView
@@ -47,6 +48,8 @@ class CategoryView: UIViewController {
         let category = categories[indexPath.row]
         mealByCategoryVC.userSelectedCategory = category.strCategory
     }
+=======
+>>>>>>> parent of 8a44157 (user can now select by category)
 }
 
 // extend our view controller to conform to the tableView's datasource protocol
