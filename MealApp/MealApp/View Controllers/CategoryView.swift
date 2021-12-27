@@ -13,7 +13,6 @@ class CategoryView: UIViewController {
     var categories = [categoryInfo]() {
         didSet {
             tableView.reloadData()
-            ()
         }
     }
     
@@ -39,6 +38,8 @@ class CategoryView: UIViewController {
         }
     }
     
+    
+    // pass category name to MealByCategoryView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let mealByCategoryVC = segue.destination as? MealByCategoryView, let indexPath = tableView.indexPathForSelectedRow else {
             fatalError("verify class name in identity inspector - could not get an instance")

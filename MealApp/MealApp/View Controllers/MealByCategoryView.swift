@@ -22,7 +22,6 @@ class MealByCategoryView: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         loadData()
-
     }
     
     func loadData() {
@@ -36,6 +35,14 @@ class MealByCategoryView: UIViewController {
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let MealDetailVC = segue.destination as? MealDetailView, let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("verify class name in identity inspector - could not get an instance")
+        }
+        let mealID = meals[indexPath.row]
+        MealDetailVC.mealID = mealID.idMeal
     }
 }
 

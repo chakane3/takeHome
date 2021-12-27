@@ -23,6 +23,7 @@
 		9494C46C2776E33A008025DD /* MealAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9494C46B2776E33A008025DD /* MealAppTests.swift */; };
 		9494C4762776E33A008025DD /* MealAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9494C4752776E33A008025DD /* MealAppUITests.swift */; };
 		9494C4782776E33A008025DD /* MealAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9494C4772776E33A008025DD /* MealAppUITestsLaunchTests.swift */; };
+		949CBB6727792AA100766438 /* MealFromID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949CBB6627792AA100766438 /* MealFromID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		9494C4712776E33A008025DD /* MealAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MealAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9494C4752776E33A008025DD /* MealAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAppUITests.swift; sourceTree = "<group>"; };
 		9494C4772776E33A008025DD /* MealAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		949CBB6627792AA100766438 /* MealFromID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFromID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				94271893277824EB00578DD1 /* MealCategory.swift */,
 				942F554327790A5C00267516 /* MealsFromCategory.swift */,
+				949CBB6627792AA100766438 /* MealFromID.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949CBB6727792AA100766438 /* MealFromID.swift in Sources */,
 				94271894277824EB00578DD1 /* MealCategory.swift in Sources */,
 				9494C4552776E339008025DD /* AppDelegate.swift in Sources */,
 				942F55482779175C00267516 /* MealDetailView.swift in Sources */,

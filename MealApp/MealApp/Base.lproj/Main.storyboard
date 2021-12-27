@@ -188,18 +188,47 @@
         <!--Meal Detail-->
         <scene sceneID="2YZ-Rl-4Yh">
             <objects>
-                <viewController id="PtK-x1-Qpn" sceneMemberID="viewController">
+                <viewController id="PtK-x1-Qpn" customClass="MealDetailView" customModule="MealApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C8B-Q7-qLU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-5x-IE0">
+                                <rect key="frame" x="87" y="170" width="240" height="219"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="SyR-B9-jj6"/>
+                                    <constraint firstAttribute="height" constant="219" id="lZF-Tp-o6S"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GdQ-CB-EL2">
+                                <rect key="frame" x="20" y="397" width="374" height="416"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="OmQ-oi-9WV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="Vbu-5x-IE0" secondAttribute="trailing" constant="87" id="AaL-tT-Sxd"/>
+                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="20" id="Hdp-8p-DVe"/>
+                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="GdQ-CB-EL2" secondAttribute="trailing" constant="20" id="gRL-AK-RmJ"/>
+                            <constraint firstItem="Vbu-5x-IE0" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" constant="30" id="hM3-Mo-nvc"/>
+                            <constraint firstItem="Vbu-5x-IE0" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="87" id="oQF-6q-eQ3"/>
+                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="tBg-iE-J0l"/>
+                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="top" secondItem="Vbu-5x-IE0" secondAttribute="bottom" constant="8" id="zEm-Dt-gpF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
+                    <connections>
+                        <outlet property="mealImageView" destination="Vbu-5x-IE0" id="7dT-Lb-NMw"/>
+                        <outlet property="mealInfoTextView" destination="GdQ-CB-EL2" id="8gT-yi-XsS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edm-Rf-XAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568" y="810"/>
+            <point key="canvasLocation" x="3566.666666666667" y="809.59821428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mXJ-he-KGg">
@@ -240,6 +269,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

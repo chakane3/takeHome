@@ -19,8 +19,8 @@ struct mealOption: Codable {
 
 
 extension mealFromCategory {
-    static func getMealsFromCategory(for query: String, completionHandler: @escaping (Result<[mealOption], Errors>) -> ()) {
-        let endpoint = "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(query)"
+    static func getMealsFromCategory(for categoryName: String, completionHandler: @escaping (Result<[mealOption], Errors>) -> ()) {
+        let endpoint = "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(categoryName)"
         NetworkRequest.shared.getData(from: endpoint) { (result) in
             switch result {
             case .failure(let networkError):

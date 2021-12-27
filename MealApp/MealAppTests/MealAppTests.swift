@@ -64,4 +64,21 @@ class MealAppTests: XCTestCase {
         }
         wait(for: [exp], timeout: 5.0)
     }
+    
+    func testFetchMealDetailInfo() {
+        let mealID = "52842"
+        let exp = XCTestExpectation(description: "200 OK")
+        let numOfBytes = 2000
+        MealDetail.getMealsDetail(for: mealID) { (result) in
+            switch result {
+            case .failure(let networkError):
+                XCTFail("network error: \(networkError)")
+                
+            case .success(let data):
+                exp.fulfill()
+                XCTAssertGreaterThan(data.count, numOfBytes)
+            }
+        }
+        wait(for: [exp], timeout: 5.0)
+    }
 }

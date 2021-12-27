@@ -8,22 +8,35 @@
 import UIKit
 
 class MealDetailView: UIViewController {
-
+    @IBOutlet weak var mealImageView: UIImageView!
+    @IBOutlet weak var mealInfoTextView: UITextView!
+    
+    var mealID: String?
+    
+    var mealDetails: [MealInfo]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadData()
+        updateUI()
+        dump(mealDetails)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadData() {
+        MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("MealDetaiView: \(error)")
+                    
+                case .success(let data):
+                    self.mealDetails = data
+                }
+            }
+        }
     }
-    */
-
+    
+    func updateUI() {
+        
+    }
 }
