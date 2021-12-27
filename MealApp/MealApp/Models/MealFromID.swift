@@ -1,4 +1,4 @@
-//
+////
 //  MealFromID.swift
 //  MealApp
 //
@@ -16,32 +16,45 @@ struct MealInfo: Decodable {
     let strCategory: String
     let strArea: String
     let strInstructions: String
-    
-    // the null json value is handled by using an optional on the property used
-    
+}
+
+struct Ingredients: Decodable {
+    let meals: [MealIngredients?]
+}
+
+// * seperate ingredients from measurements
+// there should be an equal count of non-nil measurements and ingredients
+struct MealIngredients: Decodable {
     // ingredients
     // value could be String, "", or null
-    let strIngredient1: String?
-    let strIngredient2: String?
-    let strIngredient3: String?
-    let strIngredient4: String?
-    let strIngredient5: String?
-    let strIngredient6: String?
-    let strIngredient7: String?
-    let strIngredient8: String?
-    let strIngredient9: String?
-    let strIngredient10: String?
-    let strIngredient11: String?
-    let strIngredient12: String?
-    let strIngredient13: String?
-    let strIngredient14: String?
-    let strIngredient15: String?
-    let strIngredient16: String?
-    let strIngredient17: String?
-    let strIngredient18: String?
-    let strIngredient19: String?
-    let strIngredient20: String?
-    
+
+    let strIngredient1: String
+    let strIngredient2: String
+    let strIngredient3: String
+    let strIngredient4: String
+    let strIngredient5: String
+    let strIngredient6: String
+    let strIngredient7: String
+    let strIngredient8: String
+    let strIngredient9: String
+    let strIngredient10: String
+    let strIngredient11: String
+    let strIngredient12: String
+    let strIngredient13: String
+    let strIngredient14: String
+    let strIngredient15: String
+    let strIngredient16: String
+    let strIngredient17: String
+    let strIngredient18: String
+    let strIngredient19: String
+    let strIngredient20: String
+}
+
+struct Measurements: Decodable {
+    let meals: [MealMeasurements]
+}
+
+struct MealMeasurements: Decodable {
     // measure
     // value could be String, "", or null
     let strMeasure1: String?
@@ -65,7 +78,6 @@ struct MealInfo: Decodable {
     let strMeasure19: String?
     let strMeasure20: String?
 }
-
 extension MealDetail {
     static func getMealsDetail(for categoryID: String, completionHandler: @escaping (Result<[MealInfo], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
@@ -76,7 +88,6 @@ extension MealDetail {
                 completionHandler(.failure(networkError))
                 
             case .success(let data):
-                
                 do {
                     let mealData = try JSONDecoder().decode(MealDetail.self, from: data)
                     completionHandler(.success(mealData.meals))
@@ -88,3 +99,23 @@ extension MealDetail {
     }
 }
 
+extension Ingredients {
+    static func getMealIngredients(for categoryID: String, completionHandler: @escaping (Result<[MealIngredients?], Errors>) -> ()) {
+        let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
+        
+        NetworkRequest.shared.getData(from: endpoint) { (result) in
+            switch result {
+            case .failure(let networkError):
+                completionHandler(.failure(networkError))
+                
+            case .success(let data):
+                do {
+                    let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
+                    completionHandler(.success(mealData.meals))
+                } catch {
+                    completionHandler(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+}
