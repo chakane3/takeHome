@@ -193,37 +193,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vbu-5x-IE0">
-                                <rect key="frame" x="87" y="170" width="240" height="219"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="SyR-B9-jj6"/>
-                                    <constraint firstAttribute="height" constant="219" id="lZF-Tp-o6S"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GdQ-CB-EL2">
-                                <rect key="frame" x="20" y="397" width="374" height="416"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cAs-A8-7ou">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailCell" rowHeight="627" id="jfD-Py-moV" customClass="DetailCell" customModule="MealApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="627"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jfD-Py-moV" id="OgQ-NU-5C5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fJr-Ne-GBa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="627"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fJr-Ne-GBa" firstAttribute="top" secondItem="OgQ-NU-5C5" secondAttribute="top" id="9Ff-tN-Nx0"/>
+                                                <constraint firstItem="fJr-Ne-GBa" firstAttribute="leading" secondItem="OgQ-NU-5C5" secondAttribute="leading" id="9r0-U1-3vz"/>
+                                                <constraint firstAttribute="trailing" secondItem="fJr-Ne-GBa" secondAttribute="trailing" id="tR9-Wt-dSV"/>
+                                                <constraint firstAttribute="bottom" secondItem="fJr-Ne-GBa" secondAttribute="bottom" id="xac-7w-5Vq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mealTextView" destination="fJr-Ne-GBa" id="NLO-BP-41B"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OmQ-oi-9WV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="Vbu-5x-IE0" secondAttribute="trailing" constant="87" id="AaL-tT-Sxd"/>
-                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="20" id="Hdp-8p-DVe"/>
-                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="GdQ-CB-EL2" secondAttribute="trailing" constant="20" id="gRL-AK-RmJ"/>
-                            <constraint firstItem="Vbu-5x-IE0" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" constant="30" id="hM3-Mo-nvc"/>
-                            <constraint firstItem="Vbu-5x-IE0" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="87" id="oQF-6q-eQ3"/>
-                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="tBg-iE-J0l"/>
-                            <constraint firstItem="GdQ-CB-EL2" firstAttribute="top" secondItem="Vbu-5x-IE0" secondAttribute="bottom" constant="8" id="zEm-Dt-gpF"/>
+                            <constraint firstItem="cAs-A8-7ou" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="KIN-cz-JVf"/>
+                            <constraint firstItem="cAs-A8-7ou" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" id="Qex-1z-pPq"/>
+                            <constraint firstItem="cAs-A8-7ou" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="dGF-P6-SDc"/>
+                            <constraint firstItem="cAs-A8-7ou" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="fWu-Wr-Pe6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
                     <connections>
-                        <outlet property="mealImageView" destination="Vbu-5x-IE0" id="7dT-Lb-NMw"/>
-                        <outlet property="mealInfoTextView" destination="GdQ-CB-EL2" id="8gT-yi-XsS"/>
+                        <outlet property="tableView" destination="cAs-A8-7ou" id="Yek-7y-1qU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edm-Rf-XAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

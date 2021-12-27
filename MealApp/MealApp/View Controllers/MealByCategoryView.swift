@@ -30,6 +30,7 @@ class MealByCategoryView: UIViewController {
                 switch result {
                 case .failure(let error):
                     print(error)
+                    
                 case .success(let data):
                     self.meals = data
                 }
