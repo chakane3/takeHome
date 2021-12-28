@@ -19,9 +19,10 @@ class MealDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         loadIngredientsData()
         loadMeasureData()
-        loadData()
+        
     }
     
     func loadData() {
@@ -29,7 +30,7 @@ class MealDetailView: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView: \(error)")
+                    print("MealDetaiView - getMealsDetail: \(error)")
                     
                 case .success(let data):
                     self.mealDetails = data[0]
@@ -44,25 +45,26 @@ class MealDetailView: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView: \(error)")
+                    print("MealDetaiView - loadIngredientsData: \(error)")
                     
                 case .success(let data):
                     self.mealIngredients = data[0]
-                    //                    dump(self.mealIngredients)
                     self.updateIngredientsAndMeasurements()
                     
                 }
             }
         }
     }
+    //    52874 no measurements, yes ingredients
+    //    52878 both yes
+    //    52765 loadIngredientsData found null instead of nil
     
     func loadMeasureData() {
-        print(mealID)
         Measurements.getMealMeasurements(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView: \(error)")
+                    print("MealDetaiView - loadIngredientsData: \(error)")
                     
                 case .success(let data):
                     self.mealMeasurements = data[0]
@@ -75,6 +77,29 @@ class MealDetailView: UIViewController {
         mealInfoTextView.text += "Instructions:\n\(mealDetails?.strInstructions ?? "nil")\n"
         mealNameLabel.text = mealDetails?.strMeal
     }
+    
+    func updateIngredientsAndMeasurements() {
+        let measurements = measurementsArr(for: mealMeasurements)
+        let ingredients = ingredientsArr(for: mealIngredients)
+        var idx = 0
+        mealInfoTextView.text += "Ingredients:\n"
+        mealInfoTextView.text += "\(ingredients)"
+        
+        DispatchQueue.main.async {
+            for _ in 0...ingredients.count {
+                if measurements.count > 0 {
+                    
+                    
+                    
+                    if ingredients[idx] != "" {
+                        self.mealInfoTextView.text += "\(measurements[idx]) \(ingredients[idx])\n"
+                        idx += 1
+                    }
+                }
+            }
+        }
+    }
+    
     
     func measurementsArr(for measurements: MealMeasurements?) -> [String] {
         let mir = Mirror(reflecting: mealMeasurements ?? "nil")
@@ -92,20 +117,5 @@ class MealDetailView: UIViewController {
             strArr.append("\(val.value)")
         }
         return strArr
-    }
-    
-    
-    func updateIngredientsAndMeasurements() {
-        let measurements = measurementsArr(for: mealMeasurements)
-        let ingredients = ingredientsArr(for: mealIngredients)
-        var idx = 0
-        mealInfoTextView.text += "Ingredients:\n"
-        print(measurements)
-        print()
-        print(ingredients)
-//        for _ in 0...measurements.count {
-//            mealInfoTextView.text += "\(ingredients[idx]) \(measurements[idx])"
-//            idx += 1
-//        }
     }
 }

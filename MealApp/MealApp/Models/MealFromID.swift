@@ -78,6 +78,7 @@ struct MealMeasurements: Decodable {
     let strMeasure19: String
     let strMeasure20: String
 }
+
 extension MealDetail {
     static func getMealsDetail(for categoryID: String, completionHandler: @escaping (Result<[MealInfo], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
