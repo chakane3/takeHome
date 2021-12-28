@@ -14,24 +14,27 @@ class MealDetailView: UIViewController {
     
     var mealID: String?
     
-    var mealDetails: MealInfo?
-    var mealIngredients: [MealIngredients]?
+    var mealInstructions: MealInstructions?
+    var mealIngredients: MealIngredients?
+    var mealMeasurements: MealMeasurements?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadIngredientsData()
+        loadMeasurementsData()
         loadData()
+        
     }
     
     func loadData() {
-        MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
+        MealDetail.getMealInstructions(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView: \(error)")
+                    print("MealDetaiView -> MealDetail.getMealsDetail(): \(error)")
                     
                 case .success(let data):
-                    self.mealDetails = data[0]
+                    self.mealInstructions = data[0]
                     self.updateUI()
                 }
             }
@@ -43,10 +46,10 @@ class MealDetailView: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView: \(error)")
+                    print("MealDetaiView - Ingredients.getMealIngredients(): \(error)")
                     
                 case .success(let data):
-                    self.mealIngredients = data
+                    self.mealIngredients = data[0]
 //                    dump(self.mealIngredients)
                     self.updateIngredients()
                 
@@ -55,14 +58,34 @@ class MealDetailView: UIViewController {
         }
     }
     
+    func loadMeasurementsData() {
+        Measurements.getMealMeasurements(for: mealID ?? "nil") { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("MealDetailView - Measurements.getMealMeasurements: \(error)")
+                    
+                case .success(let data):
+                    self.mealMeasurements = data[0]
+                    
+                }
+            }
+        }
+    }
+    
     func updateUI() {
-        mealInfoTextView.text += "\nInstructions:\n\(mealDetails?.strInstructions ?? "nil")"
-        mealNameLabel.text = mealDetails?.strMeal
+        mealInfoTextView.text += "\nInstructions:\n\(mealInstructions?.strInstructions ?? "nil")"
+        mealNameLabel.text = mealInstructions?.strMeal
     }
     
     
-    func updateIngredients() {
-        mealInfoTextView.text += "\(mealIngredients![0])"
-//        Ingredients.printIngredients()
+    func updateIngredients() -> [String] {
+        let mir = Mirror(reflecting: mealIngredients!)
+        mealInfoTextView.text += "Ingredients:\n"
+        for child in mir.children {
+            mealInfoTextView.text += "\(child.value)\n"
+        }
+        
     }
+    
 }

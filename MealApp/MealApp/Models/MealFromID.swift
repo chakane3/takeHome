@@ -8,18 +8,18 @@
 import Foundation
 
 struct MealDetail: Decodable {
-    let meals: [MealInfo]
+    let meals: [MealInstructions]
 }
 
-struct MealInfo: Decodable {
-    let strMeal: String
-    let strCategory: String
-    let strArea: String
-    let strInstructions: String
+struct MealInstructions: Decodable {
+    let strMeal: String?
+    let strCategory: String?
+    let strArea: String?
+    let strInstructions: String?
 }
 
 struct Ingredients: Decodable {
-    let meals: [MealIngredients]?
+    let meals: [MealIngredients]
 }
 
 // * seperate ingredients from measurements
@@ -28,26 +28,26 @@ struct MealIngredients: Decodable {
     // ingredients
     // value could be String, "", or null
 
-    let strIngredient1: String
-    let strIngredient2: String
-    let strIngredient3: String
-    let strIngredient4: String
-    let strIngredient5: String
-    let strIngredient6: String
-    let strIngredient7: String
-    let strIngredient8: String
-    let strIngredient9: String
-    let strIngredient10: String
-    let strIngredient11: String
-    let strIngredient12: String
-    let strIngredient13: String
-    let strIngredient14: String
-    let strIngredient15: String
-    let strIngredient16: String
-    let strIngredient17: String
-    let strIngredient18: String
-    let strIngredient19: String
-    let strIngredient20: String
+    let strIngredient1: String?
+    let strIngredient2: String?
+    let strIngredient3: String?
+    let strIngredient4: String?
+    let strIngredient5: String?
+    let strIngredient6: String?
+    let strIngredient7: String?
+    let strIngredient8: String?
+    let strIngredient9: String?
+    let strIngredient10: String?
+    let strIngredient11: String?
+    let strIngredient12: String?
+    let strIngredient13: String?
+    let strIngredient14: String?
+    let strIngredient15: String?
+    let strIngredient16: String?
+    let strIngredient17: String?
+    let strIngredient18: String?
+    let strIngredient19: String?
+    let strIngredient20: String?
 }
 
 struct Measurements: Decodable {
@@ -78,9 +78,12 @@ struct MealMeasurements: Decodable {
     let strMeasure19: String?
     let strMeasure20: String?
 }
+
+var endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
+
 extension MealDetail {
-    static func getMealsDetail(for categoryID: String, completionHandler: @escaping (Result<[MealInfo], Errors>) -> ()) {
-        let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
+    static func getMealInstructions(for categoryID: String, completionHandler: @escaping (Result<[MealInstructions], Errors>) -> ()) {
+        endpoint += "\(categoryID)"
         
         NetworkRequest.shared.getData(from: endpoint) { (result) in
             switch result {
@@ -101,7 +104,7 @@ extension MealDetail {
 
 extension Ingredients {
     static func getMealIngredients(for categoryID: String, completionHandler: @escaping (Result<[MealIngredients], Errors>) -> ()) {
-        let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
+        endpoint += "\(categoryID)"
         
         NetworkRequest.shared.getData(from: endpoint) { (result) in
             switch result {
@@ -112,7 +115,28 @@ extension Ingredients {
                 do {
                     let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
 //                    print(mealData.meals![0].strIngredient1)
-                    completionHandler(.success(mealData.meals!))
+                    completionHandler(.success(mealData.meals))
+                } catch {
+                    completionHandler(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+}
+
+extension Measurements {
+    static func getMealMeasurements(for categoryID: String, completionHandler: @escaping (Result<[MealMeasurements], Errors>) -> ()) {
+        endpoint += "\(categoryID)"
+        
+        NetworkRequest.shared.getData(from: endpoint) { (result) in
+            switch result {
+            case .failure(let networkError):
+                completionHandler(.failure(networkError))
+                
+            case .success(let data):
+                do {
+                    let mealData = try JSONDecoder().decode(Measurements.self, from: data)
+                    completionHandler(.success(mealData.meals))
                 } catch {
                     completionHandler(.failure(.decodingError(error)))
                 }
