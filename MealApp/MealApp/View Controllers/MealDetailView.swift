@@ -8,7 +8,6 @@
 import UIKit
 
 class MealDetailView: UIViewController {
-    @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var mealInfoTextView: UITextView!
     
     var mealID: String?

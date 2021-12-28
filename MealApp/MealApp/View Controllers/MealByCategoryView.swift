@@ -21,6 +21,7 @@ class MealByCategoryView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         loadData()
     }
     
@@ -58,5 +59,11 @@ extension MealByCategoryView: UITableViewDataSource {
         let meal = meals[indexPath.row]
         cell.configureCell(for: meal)
         return cell
+    }
+}
+
+extension MealByCategoryView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
     }
 }
