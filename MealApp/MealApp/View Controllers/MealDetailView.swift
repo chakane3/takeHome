@@ -1,4 +1,3 @@
-//
 //  MealDetailViewController.swift
 //  MealApp
 //
@@ -49,15 +48,16 @@ class MealDetailView: UIViewController {
                     
                 case .success(let data):
                     self.mealIngredients = data[0]
-//                    dump(self.mealIngredients)
-                    self.updateIngredients()
-                
+                    //                    dump(self.mealIngredients)
+                    self.updateIngredientsAndMeasurements()
+                    
                 }
             }
         }
     }
     
     func loadMeasureData() {
+        print(mealID)
         Measurements.getMealMeasurements(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -66,7 +66,6 @@ class MealDetailView: UIViewController {
                     
                 case .success(let data):
                     self.mealMeasurements = data[0]
-                    self.updateMealMeasurements()
                 }
             }
         }
@@ -76,23 +75,37 @@ class MealDetailView: UIViewController {
         mealInfoTextView.text += "Instructions:\n\(mealDetails?.strInstructions ?? "nil")\n"
         mealNameLabel.text = mealDetails?.strMeal
     }
-    func updateMealMeasurements() {
+    
+    func measurementsArr(for measurements: MealMeasurements?) -> [String] {
         let mir = Mirror(reflecting: mealMeasurements ?? "nil")
-        mealInfoTextView.text += "Measurements:\n"
+        var strArr: [String] = []
         for val in mir.children {
-            mealInfoTextView.text += "\(val.value)\n"
+            strArr.append("\(val.value)")
         }
+        return strArr
+    }
+    
+    func ingredientsArr(for ingredients: MealIngredients?) -> [String] {
+        let mir = Mirror(reflecting: mealIngredients ?? "nil")
+        var strArr: [String] = []
+        for val in mir.children {
+            strArr.append("\(val.value)")
+        }
+        return strArr
     }
     
     
-    func updateIngredients() {
-        let mir = Mirror(reflecting: mealIngredients ?? "nil")
-
+    func updateIngredientsAndMeasurements() {
+        let measurements = measurementsArr(for: mealMeasurements)
+        let ingredients = ingredientsArr(for: mealIngredients)
         var idx = 0
         mealInfoTextView.text += "Ingredients:\n"
-        for val in mir.children {
-            mealInfoTextView.text += "\(val.value)\n"
-            idx += 1
-        }
+        print(measurements)
+        print()
+        print(ingredients)
+//        for _ in 0...measurements.count {
+//            mealInfoTextView.text += "\(ingredients[idx]) \(measurements[idx])"
+//            idx += 1
+//        }
     }
 }
