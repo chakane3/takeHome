@@ -5,14 +5,16 @@
 //  Created by Chakane Shegog on 12/26/21.
 //
 
+
 import UIKit
 
 class MealDetailView: UIViewController {
     @IBOutlet weak var mealInfoTextView: UITextView!
+    @IBOutlet weak var mealNameLabel: UILabel!
     
     var mealID: String?
     
-    var mealDetails: [MealInfo]?
+    var mealDetails: MealInfo?
     var mealIngredients: [MealIngredients]?
     
     override func viewDidLoad() {
@@ -29,7 +31,7 @@ class MealDetailView: UIViewController {
                     print("MealDetaiView: \(error)")
                     
                 case .success(let data):
-                    self.mealDetails = data
+                    self.mealDetails = data[0]
                     self.updateUI()
                 }
             }
@@ -54,7 +56,8 @@ class MealDetailView: UIViewController {
     }
     
     func updateUI() {
-        mealInfoTextView.text += "\nInstructions:\n\(mealDetails?[0].strInstructions ?? "no meal info")\n\n"
+        mealInfoTextView.text += "\nInstructions:\n\(mealDetails?.strInstructions ?? "nil")"
+        mealNameLabel.text = mealDetails?.strMeal
     }
     
     

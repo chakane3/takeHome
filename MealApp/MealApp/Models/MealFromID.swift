@@ -119,19 +119,6 @@ extension Ingredients {
             }
         }
     }
-    
-    static func printIngredients() {
-        let mealIngredients = MealIngredients.self
-        let keys = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
-        let mir = Mirror(reflecting: mealIngredients)
-        let properties = Array(mir.children)
-        for k in keys {
-            if let prop = properties.first(where: {$0.label == k}) {
-                print(prop.value)
-            }
-        }
-        
-    }
 }
 
 
