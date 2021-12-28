@@ -160,8 +160,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-YG-q3F">
-                                <rect key="frame" x="20" y="108" width="374" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-YG-q3F">
+                                <rect key="frame" x="20" y="119" width="374" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -179,13 +180,10 @@
                         <constraints>
                             <constraint firstItem="k0R-tC-UpB" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="BtK-tp-hWh"/>
                             <constraint firstItem="k0R-tC-UpB" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="SgT-sf-cfQ"/>
-                            <constraint firstItem="lzW-YG-q3F" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="20" id="f4d-mh-OXQ"/>
                             <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="MI6-Dn-kEN" secondAttribute="trailing" constant="116" id="fZU-Fa-Sfw"/>
                             <constraint firstItem="k0R-tC-UpB" firstAttribute="top" secondItem="MI6-Dn-kEN" secondAttribute="bottom" constant="25" id="hGf-zv-C8L"/>
-                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="lzW-YG-q3F" secondAttribute="trailing" constant="20" id="i1E-ZD-Bqx"/>
                             <constraint firstItem="MI6-Dn-kEN" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="116" id="lmI-10-HXR"/>
                             <constraint firstItem="k0R-tC-UpB" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="mlF-tT-kEe"/>
-                            <constraint firstItem="lzW-YG-q3F" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" constant="20" id="q0B-YL-maV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
