@@ -88,9 +88,6 @@ class MealDetailView: UIViewController {
         DispatchQueue.main.async {
             for _ in 0...ingredients.count {
                 if measurements.count > 0 {
-                    
-                    
-                    
                     if ingredients[idx] != "" {
                         self.mealInfoTextView.text += "\(measurements[idx]) \(ingredients[idx])\n"
                         idx += 1

@@ -156,11 +156,7 @@
 				9427189B277850EC00578DD1 /* TableViewCells */,
 				9427189827784F8400578DD1 /* View Controllers */,
 				9427185227781EB600578DD1 /* URLSession */,
-				9494C4542776E339008025DD /* AppDelegate.swift */,
-				9494C4562776E339008025DD /* SceneDelegate.swift */,
-				9494C45A2776E339008025DD /* Main.storyboard */,
-				9494C45D2776E33A008025DD /* Assets.xcassets */,
-				9494C45F2776E33A008025DD /* LaunchScreen.storyboard */,
+				94A24346277B2357001DD996 /* Source */,
 				9494C4622776E33A008025DD /* Info.plist */,
 			);
 			path = MealApp;
@@ -181,6 +177,18 @@
 				9494C4772776E33A008025DD /* MealAppUITestsLaunchTests.swift */,
 			);
 			path = MealAppUITests;
+			sourceTree = "<group>";
+		};
+		94A24346277B2357001DD996 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				9494C45A2776E339008025DD /* Main.storyboard */,
+				9494C45F2776E33A008025DD /* LaunchScreen.storyboard */,
+				9494C4562776E339008025DD /* SceneDelegate.swift */,
+				9494C4542776E339008025DD /* AppDelegate.swift */,
+				9494C45D2776E33A008025DD /* Assets.xcassets */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
