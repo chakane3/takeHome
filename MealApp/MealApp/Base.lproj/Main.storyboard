@@ -206,6 +206,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
+                    <connections>
+                        <outlet property="mealInfoTextView" destination="k0R-tC-UpB" id="P1d-oY-3yL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edm-Rf-XAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

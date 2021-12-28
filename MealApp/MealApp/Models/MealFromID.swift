@@ -1,4 +1,4 @@
-////
+//
 //  MealFromID.swift
 //  MealApp
 //
@@ -19,7 +19,7 @@ struct MealInfo: Decodable {
 }
 
 struct Ingredients: Decodable {
-    let meals: [MealIngredients?]
+    let meals: [MealIngredients]?
 }
 
 // * seperate ingredients from measurements
@@ -100,7 +100,7 @@ extension MealDetail {
 }
 
 extension Ingredients {
-    static func getMealIngredients(for categoryID: String, completionHandler: @escaping (Result<[MealIngredients?], Errors>) -> ()) {
+    static func getMealIngredients(for categoryID: String, completionHandler: @escaping (Result<[MealIngredients], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
         
         NetworkRequest.shared.getData(from: endpoint) { (result) in
@@ -111,11 +111,27 @@ extension Ingredients {
             case .success(let data):
                 do {
                     let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
-                    completionHandler(.success(mealData.meals))
+//                    print(mealData.meals![0].strIngredient1)
+                    completionHandler(.success(mealData.meals!))
                 } catch {
                     completionHandler(.failure(.decodingError(error)))
                 }
             }
         }
     }
+    
+    static func printIngredients() {
+        let mealIngredients = MealIngredients.self
+        let keys = ["strIngredient1", "strIngredient2", "strIngredient3", "strIngredient4", "strIngredient5", "strIngredient6", "strIngredient7", "strIngredient8", "strIngredient9", "strIngredient10", "strIngredient11", "strIngredient12", "strIngredient13", "strIngredient14", "strIngredient15", "strIngredient16", "strIngredient17", "strIngredient18", "strIngredient19", "strIngredient20"]
+        let mir = Mirror(reflecting: mealIngredients)
+        let properties = Array(mir.children)
+        for k in keys {
+            if let prop = properties.first(where: {$0.label == k}) {
+                print(prop.value)
+            }
+        }
+        
+    }
 }
+
+

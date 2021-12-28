@@ -14,7 +14,7 @@ class MealDetailView: UIViewController {
     var mealID: String?
     
     var mealDetails: [MealInfo]?
-    var mealIngredients: [MealIngredients?] = []
+    var mealIngredients: [MealIngredients]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +58,9 @@ class MealDetailView: UIViewController {
         mealInfoTextView.text += "\nInstructions:\n\(mealDetails?[0].strInstructions ?? "no meal info")\n\n"
     }
     
+    
     func updateIngredients() {
-//        dump(mealIngredients)
-        mealInfoTextView.text += "\n\nIngredients:\n\(mealIngredients)"
-        
+        mealInfoTextView.text += "\(mealIngredients![0])"
+//        Ingredients.printIngredients()
     }
 }
