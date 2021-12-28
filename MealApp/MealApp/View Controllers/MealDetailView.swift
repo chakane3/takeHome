@@ -20,18 +20,17 @@ class MealDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadIngredientsData()
-        loadMeasurementsData()
         loadData()
         
     }
     
     func loadData() {
+        print("MEAL ID: \(mealID!)")
         MealDetail.getMealInstructions(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    print("MealDetaiView -> MealDetail.getMealsDetail(): \(error)")
+                    print("MealDetaiView -> MealDetail.getMealInstructions: \(error)")
                     
                 case .success(let data):
                     self.mealInstructions = data[0]
@@ -50,9 +49,6 @@ class MealDetailView: UIViewController {
                     
                 case .success(let data):
                     self.mealIngredients = data[0]
-//                    dump(self.mealIngredients)
-                    self.updateIngredients()
-                
                 }
             }
         }
@@ -74,18 +70,23 @@ class MealDetailView: UIViewController {
     }
     
     func updateUI() {
-        mealInfoTextView.text += "\nInstructions:\n\(mealInstructions?.strInstructions ?? "nil")"
-        mealNameLabel.text = mealInstructions?.strMeal
+        DispatchQueue.main.async {
+            self.mealInfoTextView.text += "\nInstructions:\n\(self.mealInstructions?.strInstructions ?? "nil")"
+            self.mealNameLabel.text = self.mealInstructions?.strMeal
+        }
     }
     
     
+    
     func updateIngredients() -> [String] {
-        let mir = Mirror(reflecting: mealIngredients!)
-        mealInfoTextView.text += "Ingredients:\n"
+        let mir = Mirror(reflecting: mealIngredients ?? "nil")
+        var strArr: [String] = []
         for child in mir.children {
-            mealInfoTextView.text += "\(child.value)\n"
+            if "\(child.value)" != ""{
+                strArr.append("\(child.value)\n")
+            }
         }
-        
+        return strArr
     }
     
 }

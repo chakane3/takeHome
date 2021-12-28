@@ -12,10 +12,10 @@ struct MealDetail: Decodable {
 }
 
 struct MealInstructions: Decodable {
-    let strMeal: String?
-    let strCategory: String?
-    let strArea: String?
-    let strInstructions: String?
+    let strMeal: String
+    let strCategory: String
+    let strArea: String
+    let strInstructions: String
 }
 
 struct Ingredients: Decodable {
@@ -94,6 +94,8 @@ extension MealDetail {
                 do {
                     let mealData = try JSONDecoder().decode(MealDetail.self, from: data)
                     completionHandler(.success(mealData.meals))
+                    
+                    
                 } catch {
                     completionHandler(.failure(.decodingError(error)))
                 }
@@ -114,7 +116,6 @@ extension Ingredients {
             case .success(let data):
                 do {
                     let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
-//                    print(mealData.meals![0].strIngredient1)
                     completionHandler(.success(mealData.meals))
                 } catch {
                     completionHandler(.failure(.decodingError(error)))
