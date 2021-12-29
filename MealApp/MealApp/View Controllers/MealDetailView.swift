@@ -124,3 +124,9 @@ extension MealDetailView {
         return strArr
     }
 }
+
+
+// 52940: [√] Instruction; [X] Ingredients w/ measure <- JSON had non-nil
+// 53016: [√] Instructions; [√] Ingredients w/ measure
+// 52765: [√] Instruction; [X] Ingredients w/ measure <- JSON has null
+

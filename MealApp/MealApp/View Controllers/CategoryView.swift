@@ -12,7 +12,7 @@ class CategoryView: UIViewController {
     
     var categories = [categoryInfo]() {
         didSet {
-            tableView.reloadData()
+                self.tableView.reloadData()
         }
     }
     
@@ -38,7 +38,7 @@ class CategoryView: UIViewController {
             }
         }
     }
-
+    
     
     // pass category name to MealByCategoryView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,7 +48,7 @@ class CategoryView: UIViewController {
         let category = categories[indexPath.row]
         mealByCategoryVC.userSelectedCategory = category.strCategory
     }
-
+    
 }
 
 // extend our view controller to conform to the tableView's datasource protocol

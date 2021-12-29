@@ -12,7 +12,10 @@ class MealByCategoryView: UIViewController {
     
     var meals = [mealOption]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
         }
     }
     
@@ -26,14 +29,16 @@ class MealByCategoryView: UIViewController {
     }
     
     func loadData() {
-        mealFromCategory.getMealsFromCategory(for: userSelectedCategory ?? "beef") { (result) in
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            mealFromCategory.getMealsFromCategory(for: self.userSelectedCategory ?? "beef") { (result) in
+                
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let data):
                     self.meals = data
                 }
+                
             }
         }
     }
