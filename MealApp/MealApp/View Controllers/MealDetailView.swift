@@ -22,9 +22,12 @@ class MealDetailView: UIViewController {
         loadData()
         loadIngredientsData()
         loadMeasureData()
-        
     }
-    
+}
+
+
+ // MARK: - functions to gather data for UI
+extension MealDetailView {
     func loadData() {
         MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
@@ -51,14 +54,10 @@ class MealDetailView: UIViewController {
                 case .success(let data):
                     self.mealIngredients = data[0]
                     self.updateIngredientsAndMeasurements()
-                    
                 }
             }
         }
     }
-    //    52874 no measurements, yes ingredients
-    //    52878 both yes
-    //    52765 loadIngredientsData found null instead of nil
     
     func loadMeasureData() {
         Measurements.getMealMeasurements(for: mealID ?? "nil") { (result) in
@@ -73,11 +72,16 @@ class MealDetailView: UIViewController {
             }
         }
     }
-    
+}
+
+
+// MARK: - functions to update UI
+extension MealDetailView {
     func updateUI() {
-        mealInfoTextView.text += "Instructions:\n\(mealDetails?.strInstructions ?? "nil")\n\n"
-        mealNameLabel.text = mealDetails?.strMeal
-        
+        DispatchQueue.main.async {
+            self.mealInfoTextView.text += "Instructions:\n\(self.mealDetails?.strInstructions ?? "nil")\n\n"
+            self.mealNameLabel.text = self.mealDetails?.strMeal
+        }
     }
     
     func updateIngredientsAndMeasurements() {
@@ -97,8 +101,11 @@ class MealDetailView: UIViewController {
             self.mealInfoTextView.text += "\n"
         }
     }
-    
-    
+}
+
+
+// MARK: - functions to return ingredients and measurements as an array of type String
+extension MealDetailView {
     func measurementsArr(for measurements: MealMeasurements?) -> [String] {
         let mir = Mirror(reflecting: mealMeasurements ?? "nil")
         var strArr: [String] = []
