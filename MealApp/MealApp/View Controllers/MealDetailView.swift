@@ -26,50 +26,48 @@ class MealDetailView: UIViewController {
 }
 
 
- // MARK: - functions to gather data for UI
+// MARK: - functions to gather data for UI
 extension MealDetailView {
     func loadData() {
         MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print("MealDetaiView - getMealsDetail: \(error)")
-                    
-                case .success(let data):
-                    self.mealDetails = data[0]
-                    self.updateUI()
-                }
+            
+            switch result {
+            case .failure(let error):
+                print("MealDetaiView - getMealsDetail: \(error)")
+                
+            case .success(let data):
+                self.mealDetails = data[0]
+                self.updateUI()
             }
+            
         }
     }
     
     func loadIngredientsData() {
         print(mealID)
         Ingredients.getMealIngredients(for: mealID ?? "nil") { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print("MealDetaiView - loadIngredientsData: \(error)")
-                    
-                case .success(let data):
-                    self.mealIngredients = data[0]
-                    self.updateIngredientsAndMeasurements()
-                }
+            switch result {
+            case .failure(let error):
+                print("MealDetaiView - loadIngredientsData: \(error)")
+                
+            case .success(let data):
+                self.mealIngredients = data[0]
+                self.updateIngredientsAndMeasurements()
             }
+            
         }
     }
     
     func loadMeasureData() {
         Measurements.getMealMeasurements(for: mealID ?? "nil") { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print("MealDetaiView - loadIngredientsData: \(error)")
-                    
-                case .success(let data):
-                    self.mealMeasurements = data[0]
-                }
+            switch result {
+            case .failure(let error):
+                print("MealDetaiView - loadIngredientsData: \(error)")
+                
+            case .success(let data):
+                self.mealMeasurements = data[0]
             }
+            
         }
     }
 }
@@ -88,8 +86,9 @@ extension MealDetailView {
         let measurements = measurementsArr(for: mealMeasurements)
         let ingredients = ingredientsArr(for: mealIngredients)
         var idx = 0
-        mealInfoTextView.text += "Ingredients:\n"
         DispatchQueue.main.async {
+            self.mealInfoTextView.text += "Ingredients:\n"
+            
             for _ in 0...ingredients.count {
                 if measurements.count > 0 {
                     if ingredients[idx] != "" {

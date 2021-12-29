@@ -12,7 +12,10 @@ class CategoryView: UIViewController {
     
     var categories = [categoryInfo]() {
         didSet {
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+            
         }
     }
     
@@ -25,16 +28,12 @@ class CategoryView: UIViewController {
     
     func loadData() {
         meals.getCategories { (result) in
-            
-            // move to main thread
-            DispatchQueue.main.async {
-                switch result {
-                case .failure( let error):
-                    print(error)
-                    
-                case .success(let categories):
-                    self.categories = categories
-                }
+            switch result {
+            case .failure( let error):
+                print(error)
+                
+            case .success(let categories):
+                self.categories = categories
             }
         }
     }

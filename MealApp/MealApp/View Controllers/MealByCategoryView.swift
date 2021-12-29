@@ -28,19 +28,20 @@ class MealByCategoryView: UIViewController {
         loadData()
     }
     
+    // took out dispatch queue here 13:55
     func loadData() {
-        DispatchQueue.main.async {
-            mealFromCategory.getMealsFromCategory(for: self.userSelectedCategory ?? "beef") { (result) in
-                
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let data):
-                    self.meals = data
-                }
-                
+        
+        mealFromCategory.getMealsFromCategory(for: self.userSelectedCategory ?? "beef") { (result) in
+            
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let data):
+                self.meals = data
             }
+            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
