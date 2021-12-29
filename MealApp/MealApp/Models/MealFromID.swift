@@ -114,6 +114,13 @@ extension Ingredients {
                     let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
                     completionHandler(.success(mealData.meals!))
                 } catch {
+                    // handle null json values
+//                    do {
+//                        let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
+//                        completionHandler(.success(mealData.meals!))
+//                    } catch {
+//
+//                    }
                     completionHandler(.failure(.decodingError(error)))
                 }
             }

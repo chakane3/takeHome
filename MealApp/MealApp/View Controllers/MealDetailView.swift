@@ -41,6 +41,7 @@ class MealDetailView: UIViewController {
     }
     
     func loadIngredientsData() {
+        print(mealID)
         Ingredients.getMealIngredients(for: mealID ?? "nil") { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -74,8 +75,9 @@ class MealDetailView: UIViewController {
     }
     
     func updateUI() {
-        mealInfoTextView.text += "Instructions:\n\(mealDetails?.strInstructions ?? "nil")\n"
+        mealInfoTextView.text += "Instructions:\n\(mealDetails?.strInstructions ?? "nil")\n\n"
         mealNameLabel.text = mealDetails?.strMeal
+        
     }
     
     func updateIngredientsAndMeasurements() {
@@ -83,8 +85,6 @@ class MealDetailView: UIViewController {
         let ingredients = ingredientsArr(for: mealIngredients)
         var idx = 0
         mealInfoTextView.text += "Ingredients:\n"
-        mealInfoTextView.text += "\(ingredients)"
-        
         DispatchQueue.main.async {
             for _ in 0...ingredients.count {
                 if measurements.count > 0 {
@@ -94,6 +94,7 @@ class MealDetailView: UIViewController {
                     }
                 }
             }
+            self.mealInfoTextView.text += "\n"
         }
     }
     
