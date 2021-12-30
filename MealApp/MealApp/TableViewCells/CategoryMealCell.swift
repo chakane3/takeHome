@@ -19,8 +19,8 @@ class CategoryMealCell: UITableViewCell {
     
     func configureCell(for meal: mealOption) {
         mealNameLabel.text = meal.strMeal
-        // TODO: add image handler
         
+        // image handler
         mealImageView.getImage(with: meal.strMealThumb) { [weak self] (result) in
             switch result {
             case .failure:

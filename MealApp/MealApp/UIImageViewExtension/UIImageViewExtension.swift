@@ -8,8 +8,7 @@
 import UIKit
 import Foundation
 
-// this an extension to use our NetworkRequest to have it implement our NetworkSession wrapper.
-
+// this an extension to use our NetworkRequest so we can implement it our NetworkSession wrapper.
 extension UIImageView {
     func getImage(with url: String, completion: @escaping (Result<UIImage, Errors>) -> ()) {
         let activityIndicator = UIActivityIndicatorView(style: .large)

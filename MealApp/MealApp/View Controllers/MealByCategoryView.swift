@@ -27,11 +27,9 @@ class MealByCategoryView: UIViewController {
         loadData()
     }
     
-    // took out dispatch queue here 13:55
+    
     func loadData() {
-        
         mealFromCategory.getMealsFromCategory(for: self.userSelectedCategory ?? "beef") { (result) in
-            
             switch result {
             case .failure(let error):
                 print(error)
@@ -41,6 +39,8 @@ class MealByCategoryView: UIViewController {
         }
     }
     
+    
+    // pass our mealID to our MealDetailView Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let MealDetailVC = segue.destination as? MealDetailView, let indexPath = tableView.indexPathForSelectedRow else {
             fatalError("verify class name in identity inspector - could not get an instance")

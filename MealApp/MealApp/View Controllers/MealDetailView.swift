@@ -21,13 +21,11 @@ class MealDetailView: UIViewController {
         loadData()
         loadMeasureData()
         loadIngredientsData()
-        
-        
     }
 }
 
 
-// MARK: - functions to gather data for UI
+// MARK: - functions to gather data
 extension MealDetailView {
     func loadData() {
         MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
@@ -38,8 +36,6 @@ extension MealDetailView {
             case .success(let data):
                 self.mealDetails = data[0]
                 DispatchQueue.main.async {
-                    
-                    
                     self.updateUI()
                 }
             }
@@ -55,7 +51,6 @@ extension MealDetailView {
             case .success(let data):
                 self.mealIngredients = data[0]
                 DispatchQueue.main.async {
-                    
                     self.updateIngredientsAndMeasurements()
                 }
             }
@@ -70,7 +65,6 @@ extension MealDetailView {
                 
             case .success(let data):
                     self.mealMeasurements = data[0]
-                
             }
         }
     }

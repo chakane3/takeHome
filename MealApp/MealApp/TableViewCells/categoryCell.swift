@@ -9,7 +9,6 @@ import UIKit
 
 class categoryCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var categoryDescription: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
     
     override func prepareForReuse() {
@@ -21,7 +20,7 @@ class categoryCell: UITableViewCell {
     func configureCell(for category: categoryInfo) {
         categoryLabel.text = category.strCategory
         
-        // TODO: add image handler
+        // image handler
         categoryImageView.getImage(with: category.strCategoryThumb) { [weak self] (result) in
             switch result {
             case .failure:

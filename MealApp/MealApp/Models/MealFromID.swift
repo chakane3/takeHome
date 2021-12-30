@@ -24,11 +24,10 @@ struct Ingredients: Decodable {
 }
 
 // * seperate ingredients from measurements
-// there should be an equal count of non-nil measurements and ingredients
+// there should be an assumed equal count of non-nil measurements and ingredients
 struct MealIngredients: Codable {
     // ingredients
     // value could be String, "", or null
-
     let strIngredient1: String
     let strIngredient2: String
     let strIngredient3: String
@@ -50,6 +49,8 @@ struct MealIngredients: Codable {
     let strIngredient19: String
     let strIngredient20: String
     
+    
+    // allows us to check if a property is not of type String, it will set it to an empty string
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.strIngredient1 = try container.decodeIfPresent(String.self, forKey: .strIngredient1) ?? ""
@@ -130,6 +131,8 @@ struct MealMeasurements: Codable {
 }
 
 extension MealDetail {
+    
+    // returns data from MealInfo
     static func getMealsDetail(for categoryID: String, completionHandler: @escaping (Result<[MealInfo], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
         
@@ -150,6 +153,8 @@ extension MealDetail {
     }
 }
 
+
+// returns data from MealIngredients
 extension Ingredients {
     static func getMealIngredients(for categoryID: String, completionHandler: @escaping (Result<[MealIngredients], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
@@ -171,6 +176,8 @@ extension Ingredients {
     }
 }
 
+
+// returns data from meal Measurements
 extension Measurements {
     static func getMealMeasurements(for categoryID: String, completionHandler: @escaping (Result<[MealMeasurements], Errors>) -> ()) {
         let endpoint = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(categoryID)"
