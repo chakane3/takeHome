@@ -150,45 +150,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0R-tC-UpB">
-                                <rect key="frame" x="0.0" y="377" width="414" height="485"/>
+                                <rect key="frame" x="0.0" y="204" width="414" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="485" id="amJ-2d-auS"/>
-                                    <constraint firstAttribute="width" constant="414" id="kHx-Zm-ngS"/>
+                                    <constraint firstAttribute="height" constant="658" id="Noc-QH-YoR"/>
+                                    <constraint firstAttribute="width" constant="414" id="c0F-HI-j0O"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-YG-q3F">
-                                <rect key="frame" x="20" y="119" width="374" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-YG-q3F">
+                                <rect key="frame" x="20" y="118" width="374" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MI6-Dn-kEN">
-                                <rect key="frame" x="116" y="197" width="182" height="153.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="156" id="Fqc-3M-Zrj"/>
-                                    <constraint firstAttribute="width" constant="182" id="bWg-um-CVy"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OmQ-oi-9WV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="BtK-tp-hWh"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="SgT-sf-cfQ"/>
-                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="MI6-Dn-kEN" secondAttribute="trailing" constant="116" id="fZU-Fa-Sfw"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="top" secondItem="MI6-Dn-kEN" secondAttribute="bottom" constant="25" id="hGf-zv-C8L"/>
-                            <constraint firstItem="MI6-Dn-kEN" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="116" id="lmI-10-HXR"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="mlF-tT-kEe"/>
+                            <constraint firstItem="lzW-YG-q3F" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="20" id="4SI-h3-UWD"/>
+                            <constraint firstItem="lzW-YG-q3F" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" constant="30" id="GZB-Zk-CbQ"/>
+                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="lzW-YG-q3F" secondAttribute="trailing" constant="20" id="Hfr-XO-iXq"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="Ucw-7f-Dbe"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="jPK-rd-TJ9"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="sh1-ND-ObS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
                     <connections>
-                        <outlet property="mealImageView" destination="MI6-Dn-kEN" id="wve-om-FwV"/>
                         <outlet property="mealInfoTextView" destination="k0R-tC-UpB" id="P1d-oY-3yL"/>
                         <outlet property="mealNameLabel" destination="lzW-YG-q3F" id="T96-iB-B8Q"/>
                     </connections>

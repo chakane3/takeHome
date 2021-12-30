@@ -82,7 +82,7 @@ class MealAppTests: XCTestCase {
             }
         }
         wait(for: [exp], timeout: 5.0)
-    }    
+    }
 }
 
 

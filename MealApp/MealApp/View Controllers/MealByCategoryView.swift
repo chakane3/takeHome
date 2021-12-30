@@ -15,7 +15,6 @@ class MealByCategoryView: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
     

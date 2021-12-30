@@ -20,7 +20,7 @@ struct MealInfo: Decodable {
 }
 
 struct Ingredients: Decodable {
-    let meals: [MealIngredients]?
+    let meals: [MealIngredients]
 }
 
 // * seperate ingredients from measurements
@@ -76,7 +76,7 @@ struct MealIngredients: Codable {
 }
 
 struct Measurements: Decodable {
-    let meals: [MealMeasurements]?
+    let meals: [MealMeasurements]
 }
 
 struct MealMeasurements: Codable {
@@ -162,17 +162,8 @@ extension Ingredients {
             case .success(let data):
                 do {
                     let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
-                    completionHandler(.success(mealData.meals!))
+                    completionHandler(.success(mealData.meals))
                 } catch {
-                    
-                    // handle null json values
-                    do {
-                        let mealData = try JSONDecoder().decode(Ingredients.self, from: data)
-                        completionHandler(.success(mealData.meals!))
-                    } catch {
-                        
-                    }
-                    
                     completionHandler(.failure(.decodingError(error)))
                 }
             }
@@ -192,7 +183,7 @@ extension Measurements {
             case .success(let data):
                 do {
                     let mealData = try JSONDecoder().decode(Measurements.self, from: data)
-                    completionHandler(.success(mealData.meals!))
+                    completionHandler(.success(mealData.meals))
                 } catch {
                     completionHandler(.failure(.decodingError(error)))
                 }
