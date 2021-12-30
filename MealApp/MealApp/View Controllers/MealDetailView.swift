@@ -10,6 +10,7 @@ import UIKit
 class MealDetailView: UIViewController {
     @IBOutlet weak var mealInfoTextView: UITextView!
     @IBOutlet weak var mealNameLabel: UILabel!
+    @IBOutlet weak var mealImageView: UIImageView!
     
     var mealID: String?
     
@@ -19,11 +20,27 @@ class MealDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateMealImage()
         loadIngredientsData()
         loadMeasureData()
+        
         loadData()
-        
-        
+    }
+    
+    func updateMealImage() {
+        mealImageView.getImage(with: mealDetails?.strMealThumb ?? "") { [weak self] (result) in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.mealImageView.image = UIImage(systemName: "exclamationmark.triangle")
+                }
+                
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.mealImageView.image = image
+                }
+            }
+        }
     }
 }
 
@@ -32,21 +49,20 @@ class MealDetailView: UIViewController {
 extension MealDetailView {
     func loadData() {
         MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
-            
             switch result {
-            case .failure(let error):
-                print("MealDetaiView - getMealsDetail: \(error)")
-                
-            case .success(let data):
-                self.mealDetails = data[0]
-                self.updateUI()
+                case .failure(let error):
+                    print("MealDetaiView - getMealsDetail: \(error)")
+                    
+                case .success(let data):
+                    self.mealDetails = data[0]
+                    self.updateUI()
             }
         }
     }
     
     func loadIngredientsData() {
         print(mealID)
-        Ingredients.getMealIngredients(for: mealID ?? "nil") { (result) in
+        Ingredients.getMealIngredients(for: mealID ?? "nil")  { (result) in
             switch result {
             case .failure(let error):
                 print("MealDetaiView - loadIngredientsData: \(error)")
@@ -89,7 +105,7 @@ extension MealDetailView {
         DispatchQueue.main.async {
             self.mealInfoTextView.text += "Ingredients:\n"
             
-            for _ in 0...ingredients.count {
+            for _ in 0...ingredients.count-1 {
                 if measurements.count > 0 {
                     if ingredients[idx] != "" {
                         self.mealInfoTextView.text += "\(measurements[idx]) \(ingredients[idx])\n"
@@ -123,6 +139,3 @@ extension MealDetailView {
         return strArr
     }
 }
-// 52940: [√] Instruction; [X] Ingredients w/ measure <- JSON had non-nil
-// 53016: [√] Instructions; [√] Ingredients w/ measure
-// 52765: [√] Instruction; [X] Ingredients w/ measure <- JSON has null

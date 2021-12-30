@@ -39,9 +39,7 @@ class MealByCategoryView: UIViewController {
             case .success(let data):
                 self.meals = data
             }
-            
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

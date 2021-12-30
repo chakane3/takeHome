@@ -188,6 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
                     <connections>
+                        <outlet property="mealImageView" destination="MI6-Dn-kEN" id="wve-om-FwV"/>
                         <outlet property="mealInfoTextView" destination="k0R-tC-UpB" id="P1d-oY-3yL"/>
                         <outlet property="mealNameLabel" destination="lzW-YG-q3F" id="T96-iB-B8Q"/>
                     </connections>

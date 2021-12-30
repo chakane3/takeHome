@@ -16,6 +16,7 @@ struct MealInfo: Decodable {
     let strCategory: String
     let strArea: String
     let strInstructions: String
+    let strMealThumb: String
 }
 
 struct Ingredients: Decodable {
@@ -125,29 +126,6 @@ struct MealMeasurements: Codable {
         self.strMeasure18 = try container.decodeIfPresent(String.self, forKey: .strMeasure18) ?? ""
         self.strMeasure19 = try container.decodeIfPresent(String.self, forKey: .strMeasure19) ?? ""
         self.strMeasure20 = try container.decodeIfPresent(String.self, forKey: .strMeasure20) ?? ""
-    }
-    
-    init() {
-        self.strMeasure1 = ""
-        self.strMeasure2 = ""
-        self.strMeasure3 = ""
-        self.strMeasure4 = ""
-        self.strMeasure5 = ""
-        self.strMeasure6 = ""
-        self.strMeasure7 = ""
-        self.strMeasure8 = ""
-        self.strMeasure9 = ""
-        self.strMeasure10 = ""
-        self.strMeasure11 = ""
-        self.strMeasure12 = ""
-        self.strMeasure13 = ""
-        self.strMeasure14 = ""
-        self.strMeasure15 = ""
-        self.strMeasure16 = ""
-        self.strMeasure17 = ""
-        self.strMeasure18 = ""
-        self.strMeasure19 = ""
-        self.strMeasure20 = ""
     }
 }
 
