@@ -26,7 +26,8 @@ struct Ingredients: Decodable {
 // there should be an equal count of non-nil measurements and ingredients
 struct MealIngredients: Codable {
     // ingredients
-    // possible values could be String, "", or null
+    // value could be String, "", or null
+
     let strIngredient1: String
     let strIngredient2: String
     let strIngredient3: String
@@ -48,8 +49,6 @@ struct MealIngredients: Codable {
     let strIngredient19: String
     let strIngredient20: String
     
-    
-    // if we have a value other than String in our property we set it to an empty string ""
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.strIngredient1 = try container.decodeIfPresent(String.self, forKey: .strIngredient1) ?? ""
@@ -104,8 +103,6 @@ struct MealMeasurements: Codable {
     let strMeasure19: String
     let strMeasure20: String
     
-    
-    // if we a value other than String in our property we set it to an empty string ""
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.strMeasure1 = try container.decodeIfPresent(String.self, forKey: .strMeasure1) ?? ""
@@ -128,6 +125,29 @@ struct MealMeasurements: Codable {
         self.strMeasure18 = try container.decodeIfPresent(String.self, forKey: .strMeasure18) ?? ""
         self.strMeasure19 = try container.decodeIfPresent(String.self, forKey: .strMeasure19) ?? ""
         self.strMeasure20 = try container.decodeIfPresent(String.self, forKey: .strMeasure20) ?? ""
+    }
+    
+    init() {
+        self.strMeasure1 = ""
+        self.strMeasure2 = ""
+        self.strMeasure3 = ""
+        self.strMeasure4 = ""
+        self.strMeasure5 = ""
+        self.strMeasure6 = ""
+        self.strMeasure7 = ""
+        self.strMeasure8 = ""
+        self.strMeasure9 = ""
+        self.strMeasure10 = ""
+        self.strMeasure11 = ""
+        self.strMeasure12 = ""
+        self.strMeasure13 = ""
+        self.strMeasure14 = ""
+        self.strMeasure15 = ""
+        self.strMeasure16 = ""
+        self.strMeasure17 = ""
+        self.strMeasure18 = ""
+        self.strMeasure19 = ""
+        self.strMeasure20 = ""
     }
 }
 
