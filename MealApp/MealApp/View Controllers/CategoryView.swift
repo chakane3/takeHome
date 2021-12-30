@@ -15,7 +15,6 @@ class CategoryView: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
     }
     
@@ -26,6 +25,8 @@ class CategoryView: UIViewController {
         loadData()
     }
     
+    
+    // capture our categories
     func loadData() {
         meals.getCategories { (result) in
             switch result {

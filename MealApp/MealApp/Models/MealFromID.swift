@@ -26,8 +26,7 @@ struct Ingredients: Decodable {
 // there should be an equal count of non-nil measurements and ingredients
 struct MealIngredients: Codable {
     // ingredients
-    // value could be String, "", or null
-
+    // possible values could be String, "", or null
     let strIngredient1: String
     let strIngredient2: String
     let strIngredient3: String
@@ -49,6 +48,8 @@ struct MealIngredients: Codable {
     let strIngredient19: String
     let strIngredient20: String
     
+    
+    // if we have a value other than String in our property we set it to an empty string ""
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.strIngredient1 = try container.decodeIfPresent(String.self, forKey: .strIngredient1) ?? ""

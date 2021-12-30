@@ -19,9 +19,11 @@ class MealDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         loadIngredientsData()
         loadMeasureData()
+        loadData()
+        
+        
     }
 }
 
@@ -39,7 +41,6 @@ extension MealDetailView {
                 self.mealDetails = data[0]
                 self.updateUI()
             }
-            
         }
     }
     
@@ -67,7 +68,6 @@ extension MealDetailView {
             case .success(let data):
                 self.mealMeasurements = data[0]
             }
-            
         }
     }
 }
@@ -126,4 +126,3 @@ extension MealDetailView {
 // 52940: [√] Instruction; [X] Ingredients w/ measure <- JSON had non-nil
 // 53016: [√] Instructions; [√] Ingredients w/ measure
 // 52765: [√] Instruction; [X] Ingredients w/ measure <- JSON has null
-
