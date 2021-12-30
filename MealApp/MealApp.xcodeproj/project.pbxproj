@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940C0494277D079800ABCDD7 /* JSONNullCase.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0493277D079800ABCDD7 /* JSONNullCase.json */; };
 		9427185427781ED000578DD1 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427185327781ED000578DD1 /* NetworkServices.swift */; };
 		94271894277824EB00578DD1 /* MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94271893277824EB00578DD1 /* MealCategory.swift */; };
 		9427189A27784FA600578DD1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427189927784FA600578DD1 /* CategoryView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		940C0493277D079800ABCDD7 /* JSONNullCase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JSONNullCase.json; sourceTree = "<group>"; };
 		9427185327781ED000578DD1 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		94271893277824EB00578DD1 /* MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategory.swift; sourceTree = "<group>"; };
 		9427189927784FA600578DD1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		940C048E277D073000ABCDD7 /* TestJSONData */ = {
+			isa = PBXGroup;
+			children = (
+				940C0493277D079800ABCDD7 /* JSONNullCase.json */,
+			);
+			path = TestJSONData;
+			sourceTree = "<group>";
+		};
 		9427185227781EB600578DD1 /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		9494C4532776E339008025DD /* MealApp */ = {
 			isa = PBXGroup;
 			children = (
+				940C048E277D073000ABCDD7 /* TestJSONData */,
 				9427189E277853DF00578DD1 /* Models */,
 				9427189B277850EC00578DD1 /* TableViewCells */,
 				9427189827784F8400578DD1 /* View Controllers */,
@@ -297,6 +308,7 @@
 			files = (
 				9494C4612776E33A008025DD /* LaunchScreen.storyboard in Resources */,
 				9494C45E2776E33A008025DD /* Assets.xcassets in Resources */,
+				940C0494277D079800ABCDD7 /* JSONNullCase.json in Resources */,
 				9494C45C2776E339008025DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

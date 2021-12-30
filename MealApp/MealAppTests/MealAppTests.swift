@@ -78,9 +78,12 @@ class MealAppTests: XCTestCase {
                 
             case .success(let data):
                 exp.fulfill()
-                XCTAssertGreaterThan(data.count, numOfBytes)
+                XCTAssertGreaterThan(numOfBytes, data.count)
             }
         }
         wait(for: [exp], timeout: 5.0)
-    }
+    }    
 }
+
+
+
