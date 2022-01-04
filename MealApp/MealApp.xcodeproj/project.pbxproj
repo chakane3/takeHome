@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		940C0497277D5F8F00ABCDD7 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0496277D5F8F00ABCDD7 /* UIImageViewExtension.swift */; };
-		9427185427781ED000578DD1 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427185327781ED000578DD1 /* NetworkServices.swift */; };
+		9427185427781ED000578DD1 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427185327781ED000578DD1 /* NetworkRequest.swift */; };
 		94271894277824EB00578DD1 /* MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94271893277824EB00578DD1 /* MealCategory.swift */; };
 		9427189A27784FA600578DD1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427189927784FA600578DD1 /* CategoryView.swift */; };
 		9427189D2778510E00578DD1 /* categoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9427189C2778510E00578DD1 /* categoryCell.swift */; };
@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		940C0496277D5F8F00ABCDD7 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		9427185327781ED000578DD1 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		9427185327781ED000578DD1 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		94271893277824EB00578DD1 /* MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategory.swift; sourceTree = "<group>"; };
 		9427189927784FA600578DD1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		9427189C2778510E00578DD1 /* categoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryCell.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		9427185227781EB600578DD1 /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
-				9427185327781ED000578DD1 /* NetworkServices.swift */,
+				9427185327781ED000578DD1 /* NetworkRequest.swift */,
 			);
 			path = URLSession;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				940C0497277D5F8F00ABCDD7 /* UIImageViewExtension.swift in Sources */,
 				9494C4552776E339008025DD /* AppDelegate.swift in Sources */,
 				942F55482779175C00267516 /* MealDetailView.swift in Sources */,
-				9427185427781ED000578DD1 /* NetworkServices.swift in Sources */,
+				9427185427781ED000578DD1 /* NetworkRequest.swift in Sources */,
 				942F554427790A5C00267516 /* MealsFromCategory.swift in Sources */,
 				942F55462779172900267516 /* MealByCategoryView.swift in Sources */,
 				9427189A27784FA600578DD1 /* CategoryView.swift in Sources */,
