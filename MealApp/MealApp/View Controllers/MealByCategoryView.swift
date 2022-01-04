@@ -34,7 +34,7 @@ class MealByCategoryView: UIViewController {
             case .failure(let error):
                 print(error)
             case .success(let data):
-                self.meals = data
+                self.meals = data.sorted {$0.strMeal < $1.strMeal}
             }
         }
     }

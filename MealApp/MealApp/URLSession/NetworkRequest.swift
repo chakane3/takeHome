@@ -63,15 +63,8 @@ class NetworkRequest {
                 completionHandler(.failure(.noData))
                 return
             }
-            
-            
             completionHandler(.success(data))
         }
         dataTask.resume()
     }
 }
-
-
-
-
-

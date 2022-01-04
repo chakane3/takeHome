@@ -9,7 +9,6 @@ import UIKit
 
 class MealDetailView: UIViewController {
     @IBOutlet weak var mealInfoTextView: UITextView!
-    @IBOutlet weak var mealNameLabel: UILabel!
     
     var mealID: String?
     var mealDetails: MealInfo?
@@ -18,7 +17,7 @@ class MealDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadInstructionsData()
         loadMeasureData()
         loadIngredientsData()
     }
@@ -27,7 +26,7 @@ class MealDetailView: UIViewController {
 
 // MARK: - functions to gather data
 extension MealDetailView {
-    func loadData() {
+    func loadInstructionsData() {
         MealDetail.getMealsDetail(for: mealID ?? "nil") { (result) in
             switch result {
             case .failure(let error):
@@ -35,9 +34,7 @@ extension MealDetailView {
                 
             case .success(let data):
                 self.mealDetails = data[0]
-                DispatchQueue.main.async {
-                    self.updateUI()
-                }
+                self.updateInstructions()
             }
         }
     }
@@ -50,9 +47,7 @@ extension MealDetailView {
                 
             case .success(let data):
                 self.mealIngredients = data[0]
-                DispatchQueue.main.async {
-                    self.updateIngredientsAndMeasurements()
-                }
+                self.updateIngredientsAndMeasurements()
             }
         }
     }
@@ -73,10 +68,10 @@ extension MealDetailView {
 
 // MARK: - functions to update UI
 extension MealDetailView {
-    func updateUI() {
+    func updateInstructions() {
         DispatchQueue.main.async {
             self.mealInfoTextView.text += "Instructions:\n\(self.mealDetails?.strInstructions ?? "nil")\n\n"
-            self.mealNameLabel.text = self.mealDetails?.strMeal
+            self.navigationItem.title = self.mealDetails?.strMeal
         }
     }
     
@@ -86,7 +81,6 @@ extension MealDetailView {
         var idx = 0
         DispatchQueue.main.async {
             self.mealInfoTextView.text += "Ingredients:\n"
-            
             for _ in 0...ingredients.count-1 {
                 if measurements.count > 0 {
                     if ingredients[idx] != "" {

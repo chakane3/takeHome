@@ -17,7 +17,6 @@ extension UIImageView {
         activityIndicator.startAnimating()
         addSubview(activityIndicator)
         
-        
         NetworkRequest.shared.getData(from: url) { [weak activityIndicator] (result) in
             DispatchQueue.main.async {
                 activityIndicator?.stopAnimating()

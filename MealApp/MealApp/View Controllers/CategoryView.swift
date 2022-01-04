@@ -34,7 +34,7 @@ class CategoryView: UIViewController {
                 print(error)
                 
             case .success(let categories):
-                self.categories = categories
+                self.categories = categories.sorted {$0.strCategory < $1.strCategory} 
             }
         }
     }

@@ -150,38 +150,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0R-tC-UpB">
-                                <rect key="frame" x="0.0" y="204" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="658" id="Noc-QH-YoR"/>
-                                    <constraint firstAttribute="width" constant="414" id="c0F-HI-j0O"/>
-                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzW-YG-q3F">
-                                <rect key="frame" x="20" y="118" width="374" height="17"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OmQ-oi-9WV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lzW-YG-q3F" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" constant="20" id="4SI-h3-UWD"/>
-                            <constraint firstItem="lzW-YG-q3F" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" constant="30" id="GZB-Zk-CbQ"/>
-                            <constraint firstItem="OmQ-oi-9WV" firstAttribute="trailing" secondItem="lzW-YG-q3F" secondAttribute="trailing" constant="20" id="Hfr-XO-iXq"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="Ucw-7f-Dbe"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="jPK-rd-TJ9"/>
-                            <constraint firstItem="k0R-tC-UpB" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="sh1-ND-ObS"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="bottom" secondItem="OmQ-oi-9WV" secondAttribute="bottom" id="FKF-H5-DIT"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="top" secondItem="OmQ-oi-9WV" secondAttribute="top" id="G2w-hx-E2v"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="leading" secondItem="OmQ-oi-9WV" secondAttribute="leading" id="ibu-HE-liY"/>
+                            <constraint firstItem="k0R-tC-UpB" firstAttribute="trailing" secondItem="OmQ-oi-9WV" secondAttribute="trailing" id="rtN-Co-2TW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meal Detail" id="Hg8-EW-EW1"/>
                     <connections>
                         <outlet property="mealInfoTextView" destination="k0R-tC-UpB" id="P1d-oY-3yL"/>
-                        <outlet property="mealNameLabel" destination="lzW-YG-q3F" id="T96-iB-B8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edm-Rf-XAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -130,6 +130,8 @@ struct MealMeasurements: Codable {
     }
 }
 
+
+// MARK: - Extensions
 extension MealDetail {
     
     // returns data from MealInfo
